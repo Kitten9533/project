@@ -8,8 +8,28 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 		canScroll: true,
 		type: !!util.getRequest('type') ? util.getRequest('type') : '',
 		init: function() {
+			this.setTitle();
 			this.initBanner();
 			this.getList();
+		},
+		setTitle: function(){
+			switch(activity.type){
+				case 'FA_CZ':
+					document.title = '超值9.9';
+					break;
+				case 'FA_KQ':
+					document.title = '快抢';
+					break;
+				case 'FA_TQG':
+					document.title = '淘抢购';
+					break;
+				case 'FA_JHS':
+					document.title = '聚划算';
+					break;
+				default:
+					document.title = '活动';
+					break;
+			}
 		},
 		bind: function() {
 			$('.pro-list').on('click', '.pro-get', function(e) {
