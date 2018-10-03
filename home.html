@@ -29,16 +29,16 @@
 		<!-- 作者 -->
 		<title>首页</title>
 		<link rel="stylesheet" href="css/reset.css" />
-		<link href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.css" rel="stylesheet">
+		<link href="css/swiper.css" rel="stylesheet">
 		<link rel="stylesheet" href="css/home.css" />
 		<script src="js/calRem.js"></script>
-		<script src="https://cdn.bootcss.com/require.js/2.3.2/require.min.js"></script>
+		<script src="js/require.min.js"></script>
 		<script type="text/javascript">
 			require.config({
 				baseUrl: "./",
 				paths: {
-					"zepto": "https://cdn.bootcss.com/zepto/1.1.5/zepto.min",
-					"swiper": "https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min",
+					"zepto": "js/zepto.min",
+					"swiper": "js/swiper.min",
 					"util": "js/util",
 				},
 				shim: {
@@ -54,13 +54,15 @@
 	<body>
 		<div class="section-search">
 			<div class="section-box clearfix">
-				<input type="text" class="section-input" placeholder="输入淘宝关键词查询" />
-				<div class="icon-search"></div>
+				<input id="search" type="text" class="section-input" placeholder="输入淘宝关键词查询" />
+				<div class="icon-search-box">
+					<div class="icon-search"></div>
+				</div>
 			</div>
 		</div>
 		<div class="section-line"></div>
 		<div class="section-type">
-			<div class="type-box on">
+			<!-- <div class="type-box on">
 				<div class="type-label">精选</div>
 			</div>
 			<div class="type-box">
@@ -80,29 +82,29 @@
 			</div>
 			<div class="type-box">
 				<div class="type-label">数码</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="section-banner"></div>
 		<div class="section-tab clearfix">
-			<div class="tab-box" tourl="">
+			<div class="tab-box" tourl="activity.html?type=FA_CZ" needadzoneid="true">
 				<div class="tab-img">
 					<img src="img/tab1.png" />
 				</div>
 				<div class="tab-desc">超值9.9</div>
 			</div>
-			<div class="tab-box" tourl="https://s.click.taobao.com/MVwr1Mw">
+			<div class="tab-box" tourl="activity.html?type=FA_KQ" needadzoneid="true">
 				<div class="tab-img">
 					<img src="img/tab2.png" />
 				</div>
 				<div class="tab-desc">快抢</div>
 			</div>
-			<div class="tab-box" tourl="https://s.click.taobao.com/oCYs1Mw">
+			<div class="tab-box" tourl="activity.html?type=FA_TQG" needadzoneid="true">
 				<div class="tab-img">
 					<img src="img/tab3.png" />
 				</div>
 				<div class="tab-desc">淘抢购</div>
 			</div>
-			<div class="tab-box" tourl="https://s.click.taobao.com/sKXr1Mw">
+			<div class="tab-box" tourl="activity.html?type=FA_JHS">
 				<div class="tab-img">
 					<img src="img/tab4.png" />
 				</div>
@@ -128,7 +130,7 @@
 			</div>
 		</div>
 		<div class="section-line"></div>
-		<div class="section-pro-list">
+		<div class="section-pro-list clearfix">
 			<div class="pro-title">
 				<div class="pro-title-text">每日10点上新 好券不断</div>
 			</div>

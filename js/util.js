@@ -17,6 +17,7 @@ define(['zepto'], function($) {
 	};
 
 	var request = function(url, params, success, error) {
+		// jzz(1);
 		$.ajax({ //加载问题的回答
 			url: 'http://116.62.148.213:9300/tbkServer/' + url,
 			data: JSON.stringify(params),
@@ -25,6 +26,7 @@ define(['zepto'], function($) {
 			contentType: "application/json",
 			async: true,
 			success: function(data) {
+				// jzz(0);
 				if(data.resultCode == 0) {
 					success && success(data.data);
 				} else {
@@ -32,6 +34,7 @@ define(['zepto'], function($) {
 				}
 			},
 			error: function(err) {
+				// jzz(0);
 				error && error();
 				pop('获取信息失败，请重试。Error： ' + err);
 			}

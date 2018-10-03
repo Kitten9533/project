@@ -10,6 +10,26 @@ body {
 	margin: 0 auto;
 }
 
+.hidden {
+	display: none;
+}
+
+
+/* 重写swiper选中的样式颜色 */
+
+.section-banner .swiper-pagination-bullet-active {
+	background: #F75B51 !important;
+}
+
+.reccommend-swiper-pagination .swiper-pagination-bullet {
+	width: 0.14rem;
+	height: 0.14rem;
+}
+
+.recommend-box .swiper-pagination-bullet-active {
+	background: rgba(99, 99, 99, 1) !important;
+}
+
 
 /*搜索框部分*/
 
@@ -42,11 +62,20 @@ body {
 	position: relative;
 }
 
+.icon-search-box {
+	position: absolute;
+	width: 0.78rem;
+	height: 0.7rem;
+	top: 0;
+	right: 0;
+}
+
 .icon-search {
 	position: absolute;
 	top: 50%;
-	right: 0.26rem;
+	left: 50%;
 	margin-top: -0.13rem;
+	margin-left: -0.13rem;
 	content: '';
 	display: block;
 	width: 0.26rem;
@@ -110,10 +139,14 @@ body {
 	border-radius: 2px;
 }
 
+
+/* banner部分 */
+
 .section-banner {
 	width: 7.5rem;
 	overflow: hidden;
 	height: 3.2rem;
+	position: relative;
 }
 
 .banner-wrapper,
@@ -122,6 +155,9 @@ img {
 	width: 100%;
 	height: 100%;
 }
+
+
+/* 超值9.9 快抢 淘抢购 聚划算部分 */
 
 .section-tab {
 	width: 100%;
@@ -162,9 +198,9 @@ img {
 .section-recommend {
 	width: 100%;
 	height: 5.35rem;
-	box-sizing: border-box;
+	/* box-sizing: border-box; */
 	padding-top: 0.61rem;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .recomment-title {
@@ -179,7 +215,11 @@ img {
 
 .recommend-box {
 	width: 100%;
-	height: 3.13rem;
+	/* height: 4rem; */
+	height: 4.40rem;
+	/* height: 100%; */
+	position: relative;
+	overflow: hidden;
 }
 
 .recommend-cell-box {
@@ -203,12 +243,12 @@ img {
 
 .rec-title {
 	margin-top: 0.13rem;
-	height: 0.19rem;
+	/* height: 0.19rem; */
 	font-size: 0.19rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(102, 102, 102, 1);
-	line-height: 0.19rem;
+	/* line-height: 0.19rem; */
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -216,13 +256,13 @@ img {
 
 .rec-original-price {
 	margin-top: 0.13rem;
-	height: 0.19rem;
+	/* height: 0.19rem; */
 	font-size: 0.19rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	text-decoration: line-through;
 	color: rgba(153, 153, 153, 1);
-	line-height: 0.19rem;
+	/* line-height: 0.19rem; */
 }
 
 .rec-original-price .line-through {
@@ -232,18 +272,46 @@ img {
 .rec-price {
 	margin-top: 0.12rem;
 	color: #FDA44B;
-	height: 0.22rem;
+	/* height: 0.22rem; */
 	font-size: 0.22rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(253, 164, 75, 1);
-	line-height: 0.22rem
+	/* line-height: 0.22rem; */
 }
 
 .rec-price.price-text {
 	font-size: 400;
 	color: #FF2735;
 }
+
+.rec-coupon-info {
+	margin-top: 0.10rem;
+	display: inline-block;
+	/*width: 0.65rem;*/
+	padding-left: 0.20rem;
+	padding-right: 0.20rem;
+	height: 0.27rem;
+	/*float: right;*/
+	color: #FFF;
+	font-size: 0.22rem;
+	font-family: PingFang-SC-Medium;
+	background-size: 100% 100%;
+	/*background-repeat: no-repeat;*/
+	background-image: url(../img/rec_coupon_bg.png);
+}
+
+.rec-coupon-info .rec-coupon-text {
+	display: inline-block;
+	font-size: 0.22rem;
+	transform: scale(0.75);
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	-o-transform: scale(0.75);
+}
+
+
+/* 商品列表部分 */
 
 .section-pro-list {
 	width: 100%;
@@ -262,12 +330,12 @@ img {
 	/*display: inline-block;*/
 	margin: 0 auto;
 	width: 3.24rem;
-	height: 0.27rem;
+	/* height: 0.27rem; */
 	font-size: 0.27rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(74, 74, 74, 1);
-	line-height: 0.27rem;
+	/* line-height: 0.27rem; */
 	position: relative;
 }
 
@@ -293,7 +361,7 @@ img {
 
 .pro-list {
 	width: 100%;
-	height: 2.96rem;
+	/* height: 2.96rem; */
 	box-sizing: border-box;
 	padding-left: 0.30rem;
 	padding-right: 0.30rem;
@@ -315,11 +383,13 @@ img {
 	left: 0;
 	width: 2.95rem;
 	height: 2.96rem;
+	border-radius: 0.09rem;
 }
 
 .pro-cell .pro-content {
 	width: 100%;
 	height: 100%;
+	text-align: left;
 }
 
 .pro-cell .pro-blank {
@@ -328,25 +398,27 @@ img {
 }
 
 .pro-content .pro-title {
-	height: 0.24rem;
+	/* height: 0.24rem; */
 	font-size: 0.24rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(102, 102, 102, 1);
-	line-height: 0.24rem;
+	/* line-height: 0.24rem; */
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
+	margin-bottom: 0.11rem;
+	text-align: left;
 }
 
 .pro-content .pro-original-price {
-	margin-top: 0.21rem;
-	height: 0.22rem;
+	margin-top: 0.10rem;
+	/* height: 0.22rem; */
 	font-size: 0.22rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(153, 153, 153, 1);
-	line-height: 0.22rem;
+	/* line-height: 0.22rem; */
 }
 
 .pro-original-price .line-through {
@@ -374,4 +446,52 @@ img {
 	font-weight: 500;
 	color: rgba(153, 153, 153, 1);
 	line-height: 0.22rem;
+}
+
+.pro-content .pro-get {
+	margin-top: 0.55rem;
+	width: 2.23rem;
+	height: 0.56rem;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	background-image: url('../img/icon_get_extra.png');
+	position: relative;
+}
+
+.pro-content .pro-get .pro-coupon-info::before {
+	font-size: 0.14rem;
+	content: '￥';
+	color: #FFF;
+	display: block;
+	position: absolute;
+	top: -0.08rem;
+	left: -0.20rem;
+	width: 0.30rem;
+	height: 0.30rem;
+	transform: scale(0.75);
+	-webkit-transform: scale(0.75);
+	-moz-transform: scale(0.75);
+	-o-transform: scale(0.75);
+}
+
+.pro-content .pro-get .pro-coupon-info {
+	position: absolute;
+	height: 0.54rem;
+	top: 0;
+	right: 1.15rem;
+	font-size: 0.40rem;
+	color: #FFF;
+	line-height: 0.54rem;
+}
+
+.no-more {
+	display: none;
+	margin: 0.3rem auto;
+	height: 0.42rem;
+	font-family: PingFangSC-Regular;
+	font-size: 0.32rem;
+	color: #818B8F;
+	letter-spacing: 0;
+	text-align: center;
+	line-height: 0.42rem;
 }
