@@ -1,20 +1,26 @@
 define(['zepto'], function($) {
 	// 获取链接参数
-	var getRequest = function(strParame) {
-		var args = new Object();
-		var query = window.location.search.substring(1);
-		var pairs = query.split("&");
-		for(var i = 0; i < pairs.length; i++) {
-			var pos = pairs[i].indexOf('=');
-			if(pos == -1) continue;
-			var argname = pairs[i].substring(0, pos);
-			var value = pairs[i].substring(pos + 1);
-			value = decodeURIComponent(value);
-			args[argname] = value;
-		}
-		args[strParame] = args[strParame] || "";
-		return args[strParame];
-	};
+	//	var getRequest = function(strParame) {
+	//		var args = new Object();
+	//		var query = window.location.search.substring(1);
+	//		var pairs = query.split("&");
+	//		for(var i = 0; i < pairs.length; i++) {
+	//			var pos = pairs[i].indexOf('=');
+	//			if(pos == -1) continue;
+	//			var argname = pairs[i].substring(0, pos);
+	//			var value = pairs[i].substring(pos + 1);
+	//			value = decodeURIComponent(value);
+	//			args[argname] = value;
+	//		}
+	//		args[strParame] = args[strParame] || "";
+	//		return args[strParame];
+	//	};
+	var getRequest = function(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+		var r = encodeURI(window.location.search).substr(1).match(reg);
+		if(r != null) return decodeURI(unescape(r[2]));
+		return null;
+	}
 
 	var request = function(url, params, success, error) {
 		// jzz(1);

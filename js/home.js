@@ -7,6 +7,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 		listPageNum: 1,
 		listPageRow: 10,
 		favoritesId: '', //选品库ID，如果TYPE为空则按这个ID来
+		searchPlaceHolder: '输入淘宝关键词查询',
 		init: function() {
 			this.getType();
 			this.getData();
@@ -17,7 +18,9 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			$('.section-type').on('click', '.type-box', function() {
 				var isOn = $(this).hasClass('on');
 				var favoritesId = $(this).attr('favoritesid');
-				console.log(favoritesId);
+				var typename = $(this).attr('typename');
+				home.favoritesId = favoritesId;
+				window.location.href = 'activity.html?favoritesId=' + favoritesId + '&typeName=' + typename + '&adzoneId=' + home.adzoneId;
 				if(isOn) {
 					home.getRecommend();
 				} else {
@@ -31,13 +34,14 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				var needadzoneid = $(this).attr('needadzoneid');
 				if(!!toUrl) {
 					window.location.href = toUrl + (!!needadzoneid && !!home.adzoneId ? (toUrl.indexOf('?') > -1 ? '&' : '?') +
-						'adzoneId=' + util.adzoneId : '');
+						'adzoneId=' + home.adzoneId : '');
 				}
 			});
 			$('.icon-search-box').on('click', function() {
 				home.searchName = $('#search').val().trim();
-				home.listPageNum = 1;
-				home.getData();
+				//				home.listPageNum = 1;
+				//				home.getData();
+				window.location.href = 'search.html?searchName=' + encodeURIComponent(home.searchName) + '&time=' + new Date().getTime();
 			});
 			$('.recommend-box').on('click', '.recommend-cell-box', function() {
 				var toUrl = $(this).attr('tourl');
@@ -45,19 +49,29 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					window.location.href = toUrl;
 				}
 			});
-			$('.pro-list').on('click', '.pro-get', function(e) {
-				e.stopPropagation();
-				var toUrl = $(this).attr('tourl');
-				if(!!toUrl) {
-					window.location.href = toUrl;
-				}
-			});
+//			$('.pro-list').on('click', '.pro-get', function(e) {
+//				e.stopPropagation();
+//				var toUrl = $(this).attr('tourl');
+//				if(!!toUrl) {
+//					window.location.href = toUrl;
+//				}
+//			});
 			$('#search').bind('keydown', function(event) {
 				if(event.keyCode == "13") {
 					home.searchName = $('#search').val().trim();
-					home.listPageNum = 1;
-					home.getData();
+					window.location.href = 'search.html?searchName=' + encodeURIComponent(home.searchName) + '&time=' + new Date().getTime();
+					//					home.listPageNum = 1;
+					//					home.getData();
 				}
+			});
+			//			$('.section-search').on('click', function(){
+			//				window.location.href = 'search.html?time=' + new Date().getTime();
+			//			});
+			$('#search').bind('focus', function() {
+				$(this).attr('placeholder', null);
+			});
+			$('#search').bind('blur', function() {
+				$(this).attr('placeholder', home.searchPlaceHolder);
 			});
 			$('.jzzbg').on('click', function() {
 				$('.jzzbg').hide();
@@ -75,10 +89,14 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				pageRow: 10,
 			}, function(data) {
 				var list = data.items;
+				if(list.length == 0) {
+					$('.section-type').hide();
+					return;
+				}
 				var str = '';
 				for(var i = 0, len = list.length; i < len; i++) {
 					var item = list[i];
-					str += '<div class="type-box ' + (i == 0 ? "on" : "") + '" favoritesid="' + item.favoritesId + '">' +
+					str += '<div class="type-box ' + (i == 0 ? "on" : "") + '" favoritesid="' + item.favoritesId + '" typename="' + item.favoritesTitle + '">' +
 						'<div class="type-label">' + item.favoritesTitle + '</div>' +
 						'</div>';
 				}
@@ -89,7 +107,6 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			})
 		},
 		getRecommend: function() {
-			// TODO
 			util.jzz(1);
 			var postData = {
 				pageNum: 1,
@@ -99,6 +116,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			}
 			if(!!home.favoritesId) {
 				postData.favoritesId = Number(home.favoritesId);
+				postData.type = '';
 			}
 			util.request('business/TbkApiAction/qryFavoritesItem',
 				postData,
@@ -138,9 +156,9 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				'<div class="recommend-cell">' +
 				'<img class="rec-logo" src="' + (item.picUrl || '') + '"/>' +
 				'<div class="rec-title">' + (!!item.title ? item.title.trim() : "") + '</div>' +
-				'<div class="rec-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">' +
+				'<div class="rec-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">￥' +
 				(item.reservePrice || '') + '</span></div>' +
-				'<div class="rec-price clear">券后价：<span class="price-text">' + (item.zkFinalPrice || '') + '</span>' +
+				'<div class="rec-price clear">券后价：<span class="price-text">￥' + (item.zkFinalPrice || '') + '</span>' +
 				(!!item.couponInfo ? '<div class="rec-coupon-info"><span class="rec-coupon-text">券 </span>' + item.couponInfo + '</div>' : '') +
 				'</div>' +
 				'</div>' +
@@ -176,14 +194,14 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var str = '';
 			for(var i = 0, len = list.length; i < len; i++) {
 				var item = list[i];
-				str += '<div class="pro-cell" tourl="' + item.clickUrl + '">' +
+				str += '<div class="pro-cell" tourl="' + (item.clickUrl || item.couponClickUrl || '') + '">' +
 					'<img class="pro-logo" src="' + item.picUrl + '" />' +
 					'<div class="pro-content">' +
 					'<div class="pro-blank"></div>' +
 					'<div class="pro-title">' + (!!item.title ? item.title.trim() : "") + '</div>' +
-					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">' +
+					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">￥' +
 					item.reservePrice + '</span></div>' +
-					'<div class="pro-price">券后价：<span class="price-text">' + item.zkFinalPrice + '</span></div>' +
+					'<div class="pro-price">券后价：<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
 					(!!item.volume ? '<div class="pro-count">销量：' + item.volume + '</div>' : '') +
 					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
 					'</div>' +
@@ -220,7 +238,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				}, {
 					title: '超值9.9',
 					bannerImg: 'img/banner1.jpg',
-					bannerUrl: 'activity.html?type=FA_CZ&adzoneId=' + home.adzoneId,
+					bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + home.adzoneId,
 				},
 				// 缺少聚划算 banner
 				{

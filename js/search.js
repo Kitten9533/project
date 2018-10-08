@@ -2,32 +2,23 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 	var activity = {
 		listPageNum: 1,
 		listPageRow: 10,
-		searchName: '',
+		searchName: !!util.getRequest('searchName') ? util.getRequest('searchName') : '',
 		adzoneId: !!util.getRequest('adzoneId') ? Number(util.getRequest('adzoneId')) : 0,
 		firstLoad: false,
 		canScroll: true,
 		type: !!util.getRequest('type') ? util.getRequest('type') : '',
 		init: function() {
-			this.setTitle();
-			this.initBanner();
+			//			this.initBanner();
 			this.getList();
 		},
-		setTitle: function(){
-			var title = !!util.getRequest('typeName') ? util.getRequest('typeName') : '活动';
-			document.title = title;
-			$('.header-content').text(title);
-		},
 		bind: function() {
-			$('.icon-back').on('click', function(){
-				history.back();
-			})
-//			$('.pro-list').on('click', '.pro-get', function(e) {
-//				e.stopPropagation();
-//				var toUrl = $(this).attr('tourl');
-//				if(!!toUrl) {
-//					window.location.href = toUrl;
-//				}
-//			});
+			$('.pro-list').on('click', '.pro-get', function(e) {
+				e.stopPropagation();
+				var toUrl = $(this).attr('tourl');
+				if(!!toUrl) {
+					window.location.href = toUrl;
+				}
+			});
 			$('.pro-list').on('click', '.pro-cell', function() {
 				var toUrl = $(this).attr('tourl');
 				if(!!toUrl) {
@@ -63,7 +54,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				}, {
 					title: '超值9.9',
 					bannerImg: 'img/banner1.jpg',
-					bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + activity.adzoneId,
+					bannerUrl: 'activity.html?type=FA_CZ&adzoneId=' + activity.adzoneId,
 				},
 				// 缺少聚划算 banner
 				{
@@ -99,31 +90,20 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				pageNum: activity.listPageNum,
 				pageRow: activity.listPageRow,
 			};
-			var postUrl = 'business/TbkApiAction/qryFavoritesItem';
+			var postUrl = 'business/TbkApiAction/qryAllCoupon';
 			// 超值, 快抢
-			if(activity.type == 'FA_CZ' || activity.type == 'FA_KQ' || activity.type == 'FA_SQ') {
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
-				postData.type = activity.type;
-			}
-			if(activity.type == 'FA_TQG') {
-				postUrl = 'business/TbkApiAction/qryJuTqg';
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
-			}
-			if(activity.type == 'FA_JHS') {
-				postUrl = 'business/TbkApiAction/qryJuItem';
-			}
-			if(!!util.getRequest('favoritesId')){
-				postData.favoritesId = util.getRequest('favoritesId') || '';
-			}
+			postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
+			console.log(activity.searchName);
+			postData.searchName = activity.searchName;
 			util.request(postUrl, postData, function(data) {
 				util.jzz(0);
 				activity.firstLoad = true;
 				if(data.hasOwnProperty('items')) {
 					activity.renderList(data.items);
-//					activity.canScroll = data.items.length === activity.listPageRow;
-//					if(data.items.length < activity.listPageRow) {
+					//					activity.canScroll = data.items.length === activity.listPageRow;
+					//					if(data.items.length < activity.listPageRow) {
 					activity.canScroll = data.hasMore;
-					if(data.hasMore != 1){
+					if(data.hasMore != 1) {
 						// util.pop('没有更多了');
 						$('.no-more').show();
 					}
@@ -139,7 +119,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var str = '';
 			for(var i = 0, len = list.length; i < len; i++) {
 				var item = list[i];
-				str += '<div class="pro-cell" tourl="' + (item.clickUrl || item.couponClickUrl || '') + '">' +
+				str += '<div class="pro-cell" tourl="' + item.clickUrl + '">' +
 					'<img class="pro-logo" src="' + item.picUrl + '" />' +
 					'<div class="pro-content">' +
 					'<div class="pro-blank"></div>' +
@@ -147,7 +127,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">￥' +
 					item.reservePrice + '</span></div>' +
 					'<div class="pro-price">券后价：<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
-					(!!item.volume ? '<div class="pro-count">销量：' + item.volume + '</div>' : '' ) +
+					(!!item.volume ? '<div class="pro-count">销量：' + item.volume + '</div>' : '') +
 					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
 					'</div>' +
 					'</div>';

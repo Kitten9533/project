@@ -7,9 +7,9 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 		firstLoad: false,
 		canScroll: true,
 		type: !!util.getRequest('type') ? util.getRequest('type') : '',
+		searchType: 1, // 1：榜单热卖 2：正在抢购
 		init: function() {
 			this.setTitle();
-			this.initBanner();
 			this.getList();
 		},
 		setTitle: function(){
@@ -37,60 +37,12 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			$('.jzzbg').on('click', function() {
 				$('.jzzbg').hide();
 			});
-		},
-		initBanner: function() {
-			var banners = [{
-					bannerImg: 'img/banner2.jpg',
-					bannerUrl: '',
-				}, {
-					title: '淘宝特卖',
-					bannerImg: 'img/banner_TBTM.png',
-					bannerUrl: 'https://s.click.taobao.com/ZqLr1Mw',
-				},
-				//			{
-				//				title: '爱淘宝',
-				//				bannerImg: 'img/banner_ATB.png',
-				//				bannerUrl: 'https://s.click.taobao.com/7Nxn1Mw',
-				//			},
-				{
-					title: '天猫食品',
-					bannerImg: 'img/banner_TMSP.png',
-					bannerUrl: 'https://s.click.taobao.com/S6Bs1Mw',
-				}, {
-					title: '快抢-天猫超市百里挑一',
-					bannerImg: 'img/banner_TMCSBLTY.png',
-					bannerUrl: 'https://s.click.taobao.com/MVwr1Mw',
-				}, {
-					title: '超值9.9',
-					bannerImg: 'img/banner1.jpg',
-					bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + activity.adzoneId,
-				},
-				// 缺少聚划算 banner
-				{
-					title: '淘抢购-天猫必抢',
-					bannerImg: 'img/banner_TMBQ.png',
-					bannerUrl: 'https://s.click.taobao.com/oCYs1Mw',
-				}
-			];
-			var _this = this,
-				str = '<div class="swiper-wrapper banner-wrapper">';
-			for(var i = 0, len = banners.length; i < len; i++) {
-				var item = banners[i];
-				str += '<div class="swiper-slide" tourl="' + item.bannerUrl + '"><img src=' + item.bannerImg + '></div>';
-			};
-			str += '</div>';
-			str += '<div class="swiper-pagination banner-swiper-pagination"></div>';
-			$('.section-banner').html(str);
-			var mySwiper = new Swiper('.section-banner', {
-				autoplay: 5000,
-				autoplayDisableOnInteraction: false,
-				pagination: '.banner-swiper-pagination',
-			});
-			$('.banner-wrapper').on('click', '.swiper-slide', function() {
-				var tourl = $(this).attr('tourl');
-				if(!!tourl) {
-					window.location.href = tourl;
-				}
+			$('.type-box').on('click', function(){
+				activity.listPageNum = 1;
+				$('.type-box').removeClass('on');
+				activity.searchType = $(this).attr('type');
+				$(this).addClass('on');
+				activity.getList();
 			});
 		},
 		getList: function() {
@@ -98,6 +50,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var postData = {
 				pageNum: activity.listPageNum,
 				pageRow: activity.listPageRow,
+				type: activity.searchType,
 			};
 			var postUrl = 'business/TbkApiAction/qryFavoritesItem';
 			// 超值, 快抢
@@ -115,6 +68,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			if(!!util.getRequest('favoritesId')){
 				postData.favoritesId = util.getRequest('favoritesId') || '';
 			}
+			console.log(postData);
 			util.request(postUrl, postData, function(data) {
 				util.jzz(0);
 				activity.firstLoad = true;
@@ -147,8 +101,8 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">￥' +
 					item.reservePrice + '</span></div>' +
 					'<div class="pro-price">券后价：<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
-					(!!item.volume ? '<div class="pro-count">销量：' + item.volume + '</div>' : '' ) +
-					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
+					(!!item.volume ? '<div class="pro-count"><span class="pro-count-sold">已抢:' + item.soldNum + '</span><span>剩余:' + item.volume + '</span></div>' : '' ) +
+//					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
 					'</div>' +
 					'</div>';
 			}
