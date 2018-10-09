@@ -33,7 +33,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				var toUrl = $(this).attr('tourl');
 				var needadzoneid = $(this).attr('needadzoneid');
 				if(!!toUrl) {
-					window.location.href = toUrl + (!!needadzoneid && !!home.adzoneId ? (toUrl.indexOf('?') > -1 ? '&' : '?') +
+					window.location.href = toUrl + (!!needadzoneid && !!util.getRequest('adzoneId') ? (toUrl.indexOf('?') > -1 ? '&' : '?') +
 						'adzoneId=' + home.adzoneId : '');
 				}
 			});

@@ -102,18 +102,19 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var postUrl = 'business/TbkApiAction/qryFavoritesItem';
 			// 超值, 快抢
 			if(activity.type == 'FA_CZ' || activity.type == 'FA_KQ' || activity.type == 'FA_SQ') {
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
 				postData.type = activity.type;
 			}
 			if(activity.type == 'FA_TQG') {
 				postUrl = 'business/TbkApiAction/qryJuTqg';
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
 			}
 			if(activity.type == 'FA_JHS') {
 				postUrl = 'business/TbkApiAction/qryJuItem';
 			}
 			if(!!util.getRequest('favoritesId')){
 				postData.favoritesId = util.getRequest('favoritesId') || '';
+			}
+			if(!!util.getRequest('adzoneId')){
+				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
 			}
 			util.request(postUrl, postData, function(data) {
 				util.jzz(0);

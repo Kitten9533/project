@@ -12,13 +12,16 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			this.getList();
 		},
 		bind: function() {
-			$('.pro-list').on('click', '.pro-get', function(e) {
-				e.stopPropagation();
-				var toUrl = $(this).attr('tourl');
-				if(!!toUrl) {
-					window.location.href = toUrl;
-				}
-			});
+//			$('.pro-list').on('click', '.pro-get', function(e) {
+//				e.stopPropagation();
+//				var toUrl = $(this).attr('tourl');
+//				if(!!toUrl) {
+//					window.location.href = toUrl;
+//				}
+//			});
+			$('.icon-back').on('click', function(){
+				history.back();
+			})
 			$('.pro-list').on('click', '.pro-cell', function() {
 				var toUrl = $(this).attr('tourl');
 				if(!!toUrl) {
@@ -119,7 +122,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var str = '';
 			for(var i = 0, len = list.length; i < len; i++) {
 				var item = list[i];
-				str += '<div class="pro-cell" tourl="' + item.clickUrl + '">' +
+				str += '<div class="pro-cell" tourl="' + (item.clickUrl || item.couponClickUrl || '') + '">' +
 					'<img class="pro-logo" src="' + item.picUrl + '" />' +
 					'<div class="pro-content">' +
 					'<div class="pro-blank"></div>' +

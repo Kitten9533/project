@@ -12,22 +12,22 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			this.setTitle();
 			this.getList();
 		},
-		setTitle: function(){
+		setTitle: function() {
 			var title = !!util.getRequest('typeName') ? util.getRequest('typeName') : '活动';
 			document.title = title;
 			$('.header-content').text(title);
 		},
 		bind: function() {
-			$('.icon-back').on('click', function(){
+			$('.icon-back').on('click', function() {
 				history.back();
 			})
-//			$('.pro-list').on('click', '.pro-get', function(e) {
-//				e.stopPropagation();
-//				var toUrl = $(this).attr('tourl');
-//				if(!!toUrl) {
-//					window.location.href = toUrl;
-//				}
-//			});
+			//			$('.pro-list').on('click', '.pro-get', function(e) {
+			//				e.stopPropagation();
+			//				var toUrl = $(this).attr('tourl');
+			//				if(!!toUrl) {
+			//					window.location.href = toUrl;
+			//				}
+			//			});
 			$('.pro-list').on('click', '.pro-cell', function() {
 				var toUrl = $(this).attr('tourl');
 				if(!!toUrl) {
@@ -37,7 +37,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			$('.jzzbg').on('click', function() {
 				$('.jzzbg').hide();
 			});
-			$('.type-box').on('click', function(){
+			$('.type-box').on('click', function() {
 				activity.listPageNum = 1;
 				$('.type-box').removeClass('on');
 				activity.searchType = $(this).attr('type');
@@ -55,29 +55,29 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var postUrl = 'business/TbkApiAction/qryFavoritesItem';
 			// 超值, 快抢
 			if(activity.type == 'FA_CZ' || activity.type == 'FA_KQ' || activity.type == 'FA_SQ') {
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
 				postData.type = activity.type;
 			}
 			if(activity.type == 'FA_TQG') {
 				postUrl = 'business/TbkApiAction/qryJuTqg';
-				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
 			}
 			if(activity.type == 'FA_JHS') {
 				postUrl = 'business/TbkApiAction/qryJuItem';
 			}
-			if(!!util.getRequest('favoritesId')){
+			if(!!util.getRequest('favoritesId')) {
 				postData.favoritesId = util.getRequest('favoritesId') || '';
 			}
-			console.log(postData);
+			if(!!util.getRequest('adzoneId')) {
+				postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
+			}
 			util.request(postUrl, postData, function(data) {
 				util.jzz(0);
 				activity.firstLoad = true;
 				if(data.hasOwnProperty('items')) {
 					activity.renderList(data.items);
-//					activity.canScroll = data.items.length === activity.listPageRow;
-//					if(data.items.length < activity.listPageRow) {
+					//					activity.canScroll = data.items.length === activity.listPageRow;
+					//					if(data.items.length < activity.listPageRow) {
 					activity.canScroll = data.hasMore;
-					if(data.hasMore != 1){
+					if(data.hasMore != 1) {
 						// util.pop('没有更多了');
 						$('.no-more').show();
 					}
@@ -101,8 +101,8 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价：<span class="line-through">￥' +
 					item.reservePrice + '</span></div>' +
 					'<div class="pro-price">券后价：<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
-					(!!item.volume ? '<div class="pro-count"><span class="pro-count-sold">已抢:' + item.soldNum + '</span><span>剩余:' + item.volume + '</span></div>' : '' ) +
-//					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
+					(!!item.volume ? '<div class="pro-count"><span class="pro-count-sold">已抢:' + item.soldNum + '</span><span>剩余:' + item.volume + '</span></div>' : '') +
+					//					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
 					'</div>' +
 					'</div>';
 			}
