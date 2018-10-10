@@ -45,7 +45,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				}, {
 					title: '淘宝特卖',
 					bannerImg: 'img/banner_TBTM.png',
-					bannerUrl: 'https://s.click.taobao.com/ZqLr1Mw',
+					bannerUrl: 'https://s.click.taobao.com/lYcrdLw',
 				},
 				//			{
 				//				title: '爱淘宝',
