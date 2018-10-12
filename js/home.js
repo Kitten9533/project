@@ -166,11 +166,12 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 		},
 		getData: function() {
 			util.jzz(1);
-			util.request('business/TbkApiAction/qryAllCoupon', {
+			util.request('business/TbkApiAction/qryFavoritesItem', {
 				pageNum: home.listPageNum,
 				pageRow: home.listPageRow,
 				searchName: home.searchName || '',
 				adzoneId: !!home.adzoneId ? Number(home.adzoneId) : 0,
+				type: 'FA_QB',
 			}, function(data) {
 				home.firstLoad = true;
 				util.jzz(0);
