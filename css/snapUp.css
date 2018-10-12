@@ -133,32 +133,32 @@ img {
 
 .pro-cell {
 	width: 100%;
-	height: 2.96rem;
+	height: 2.16rem;
 	box-sizing: border-box;
 	padding-left: 3.28rem;
 	margin-bottom: 0.40rem;
 	position: relative;
 }
 
-/*.pro-cell::after{
+.pro-cell::after{
 	content: '';
 	position: absolute;
-	right: 0.63rem;
-	top: 1.89rem;
+	right: 1.11rem;
+	top: 0.84rem;
 	width: 0.58rem;
 	height: 0.58rem;
 	display: block;
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 	background-image: url(../img/icon_q.png);
-}*/
+}
 
 .pro-cell .pro-logo {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 2.95rem;
-	height: 2.96rem;
+	height: 2.16rem;
 	border-radius: 0.09rem;
 }
 
@@ -170,7 +170,7 @@ img {
 
 .pro-cell .pro-blank {
 	width: 100%;
-	height: 0.51rem;
+	height: 0.31rem;
 }
 
 .pro-content .pro-title {
