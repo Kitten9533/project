@@ -25,7 +25,7 @@ define(['zepto'], function($) {
 	var request = function(url, params, success, error) {
 		// jzz(1);
 		$.ajax({ 
-			url: 'http://116.62.148.213:9300/tbkServer/' + url,
+			url: 'http://wap.iwangzha.cn/tbkServer/' + url,
 			data: JSON.stringify(params),
 			type: 'post',
 			dataType: 'json',

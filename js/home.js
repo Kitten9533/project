@@ -49,13 +49,13 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					window.location.href = toUrl;
 				}
 			});
-//			$('.pro-list').on('click', '.pro-get', function(e) {
-//				e.stopPropagation();
-//				var toUrl = $(this).attr('tourl');
-//				if(!!toUrl) {
-//					window.location.href = toUrl;
-//				}
-//			});
+			//			$('.pro-list').on('click', '.pro-get', function(e) {
+			//				e.stopPropagation();
+			//				var toUrl = $(this).attr('tourl');
+			//				if(!!toUrl) {
+			//					window.location.href = toUrl;
+			//				}
+			//			});
 			$('#search').bind('keydown', function(event) {
 				if(event.keyCode == "13") {
 					home.searchName = $('#search').val().trim();
@@ -84,6 +84,81 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			});
 		},
 		getType: function() {
+			var data = {
+				"items": [{
+						"favoritesTitle": "全部",
+						"favoritesId": "18659735",
+						"type": "2"
+					}, {
+						"favoritesTitle": "女装",
+						"favoritesId": "18659707",
+						"type": "2"
+					}, {
+						"favoritesTitle": "男装",
+						"favoritesId": "18659705",
+						"type": "2"
+					}, {
+						"favoritesTitle": "内衣",
+						"favoritesId": "18659703",
+						"type": "2"
+					}, {
+						"favoritesTitle": "美妆个护",
+						"favoritesId": "18659697",
+						"type": "2"
+					}, {
+						"favoritesTitle": "鞋包配饰",
+						"favoritesId": "18659690",
+						"type": "2"
+					}, {
+						"favoritesTitle": "母婴",
+						"favoritesId": "18659693",
+						"type": "2"
+					},
+					//				{
+					//					"favoritesTitle": "居家",
+					//					"favoritesId": "18659696",
+					//					"type": "2"
+					//				}, 
+					{
+						"favoritesTitle": "家居家装",
+						"favoritesId": "0",
+						"type": "2"
+					},
+					{
+						"favoritesTitle": "食品",
+						"favoritesId": "18659692",
+						"type": "2"
+					},
+					{
+						"favoritesTitle": "数码家电",
+						"favoritesId": "0",
+						"type": "2"
+					},
+					{
+						"favoritesTitle": "户外运动",
+						"favoritesId": "0",
+						"type": "2"
+					},
+				]
+			};
+			var list = data.items;
+			if(list.length == 0) {
+				$('.section-type').hide();
+				return;
+			}
+			var str = '';
+			for(var i = 0, len = list.length; i < len; i++) {
+				var item = list[i];
+				str += '<div class="type-box ' + (i == 0 ? "on" : "") + '" favoritesid="' + item.favoritesId + '" typename="' + item.favoritesTitle + '">' +
+					'<div class="type-label">' + item.favoritesTitle + '</div>' +
+					'</div>';
+			}
+			$('.section-type').html(str);
+			if(list.length > 0 && !!list[0].favoritesId) {
+				home.favoritesId = list[0].favoritesId;
+			}
+			return;
+			// 以下原先调接口的，现在弃用
 			util.request('business/TbkApiAction/qryFavorites', {
 				pageNum: 1,
 				pageRow: 10,
