@@ -87,31 +87,31 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var data = {
 				"items": [{
 						"favoritesTitle": "全部",
-						"favoritesId": "18659735",
+						"favoritesId": "18539373",
 						"type": "2"
 					}, {
 						"favoritesTitle": "女装",
-						"favoritesId": "18659707",
+						"favoritesId": "18536738",
 						"type": "2"
 					}, {
 						"favoritesTitle": "男装",
-						"favoritesId": "18659705",
+						"favoritesId": "18536795",
 						"type": "2"
 					}, {
 						"favoritesTitle": "内衣",
-						"favoritesId": "18659703",
+						"favoritesId": "18536800",
 						"type": "2"
 					}, {
 						"favoritesTitle": "美妆个护",
-						"favoritesId": "18659697",
+						"favoritesId": "18536793",
 						"type": "2"
 					}, {
 						"favoritesTitle": "鞋包配饰",
-						"favoritesId": "18659690",
+						"favoritesId": "18536789",
 						"type": "2"
 					}, {
 						"favoritesTitle": "母婴",
-						"favoritesId": "18659693",
+						"favoritesId": "18536782",
 						"type": "2"
 					},
 					//				{
@@ -121,22 +121,22 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					//				}, 
 					{
 						"favoritesTitle": "家居家装",
-						"favoritesId": "0",
+						"favoritesId": "18536777",
 						"type": "2"
 					},
 					{
 						"favoritesTitle": "食品",
-						"favoritesId": "18659692",
+						"favoritesId": "18536787",
 						"type": "2"
 					},
 					{
 						"favoritesTitle": "数码家电",
-						"favoritesId": "0",
+						"favoritesId": "18536779",
 						"type": "2"
 					},
 					{
 						"favoritesTitle": "户外运动",
-						"favoritesId": "0",
+						"favoritesId": "18536802",
 						"type": "2"
 					},
 				]
