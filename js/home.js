@@ -189,10 +189,10 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				adzoneId: !!home.adzoneId ? Number(home.adzoneId) : 0,
 				type: 'FA_ZDM',
 			}
-			if(!!home.favoritesId) {
-				postData.favoritesId = Number(home.favoritesId);
-				postData.type = '';
-			}
+//			if(!!home.favoritesId) {
+//				postData.favoritesId = Number(home.favoritesId);
+//				postData.type = '';
+//			}
 			util.request('business/TbkApiAction/qryFavoritesItem',
 				postData,
 				function(data) {
