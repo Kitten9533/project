@@ -82,6 +82,22 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					window.location.href = toUrl;
 				}
 			});
+			$('.modal').on('click', function() {
+				$('.modal').hide();
+				$('.pop-up').hide();
+			})
+			$('.pop-up').on('click', '.pop-up-close', function() {
+				$('.modal').hide();
+				$('.pop-up').hide();
+			})
+			$('.pop-up').on('click', '.pop-up-btn', function() {
+//				$('.modal').hide();
+//				$('.pop-up').hide();
+				window.location.href = 'https://s.click.taobao.com/9bY0KLw'
+			})
+			$('.banner-middle-img').on('click', function(){
+				window.location.href = 'activityDoubleEleven.html?type=FA_BK&typeName=爆款专区&favoritesId=18710454&adzoneId=' + home.adzoneId;
+			});
 		},
 		getType: function() {
 			var data = {
@@ -182,17 +198,17 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			})
 		},
 		getRecommend: function() {
-			util.jzz(1);
+			//			util.jzz(1);
 			var postData = {
 				pageNum: 1,
 				pageRow: 12,
 				adzoneId: !!home.adzoneId ? Number(home.adzoneId) : 0,
 				type: 'FA_ZDM',
 			}
-//			if(!!home.favoritesId) {
-//				postData.favoritesId = Number(home.favoritesId);
-//				postData.type = '';
-//			}
+			//			if(!!home.favoritesId) {
+			//				postData.favoritesId = Number(home.favoritesId);
+			//				postData.type = '';
+			//			}
 			util.request('business/TbkApiAction/qryFavoritesItem',
 				postData,
 				function(data) {
@@ -240,7 +256,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				'</div>';
 		},
 		getData: function() {
-			util.jzz(1);
+			//			util.jzz(1);
 			util.request('business/TbkApiAction/qryFavoritesItem', {
 				pageNum: home.listPageNum,
 				pageRow: home.listPageRow,
@@ -290,39 +306,60 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			}
 		},
 		initBanner: function() {
+			//			var banners = [{
+			//					bannerImg: 'img/banner2.jpg',
+			//					bannerUrl: '',
+			//				}, {
+			//					title: '淘宝特卖',
+			//					bannerImg: 'img/banner_TBTM.png',
+			//					bannerUrl: 'https://s.click.taobao.com/lYcrdLw',
+			//				},
+			//				//			{
+			//				//				title: '爱淘宝',
+			//				//				bannerImg: 'img/banner_ATB.png',
+			//				//				bannerUrl: 'https://s.click.taobao.com/7Nxn1Mw',
+			//				//			},
+			//				{
+			//					title: '天猫食品',
+			//					bannerImg: 'img/banner_TMSP.png',
+			//					bannerUrl: 'https://s.click.taobao.com/S6Bs1Mw',
+			//				}, {
+			//					title: '快抢-天猫超市百里挑一',
+			//					bannerImg: 'img/banner_TMCSBLTY.png',
+			//					bannerUrl: 'https://s.click.taobao.com/MVwr1Mw',
+			//				}, {
+			//					title: '超值9.9',
+			//					bannerImg: 'img/banner1.jpg',
+			//					bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + home.adzoneId,
+			//				},
+			//				// 缺少聚划算 banner
+			//				{
+			//					title: '淘抢购-天猫必抢',
+			//					bannerImg: 'img/banner_TMBQ.png',
+			//					bannerUrl: 'https://s.click.taobao.com/oCYs1Mw',
+			//				}
+			//			];
 			var banners = [{
-					bannerImg: 'img/banner2.jpg',
-					bannerUrl: '',
-				}, {
-					title: '淘宝特卖',
-					bannerImg: 'img/banner_TBTM.png',
-					bannerUrl: 'https://s.click.taobao.com/lYcrdLw',
-				},
-				//			{
-				//				title: '爱淘宝',
-				//				bannerImg: 'img/banner_ATB.png',
-				//				bannerUrl: 'https://s.click.taobao.com/7Nxn1Mw',
-				//			},
-				{
-					title: '天猫食品',
-					bannerImg: 'img/banner_TMSP.png',
-					bannerUrl: 'https://s.click.taobao.com/S6Bs1Mw',
-				}, {
-					title: '快抢-天猫超市百里挑一',
-					bannerImg: 'img/banner_TMCSBLTY.png',
-					bannerUrl: 'https://s.click.taobao.com/MVwr1Mw',
-				}, {
-					title: '超值9.9',
-					bannerImg: 'img/banner1.jpg',
-					bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + home.adzoneId,
-				},
-				// 缺少聚划算 banner
-				{
-					title: '淘抢购-天猫必抢',
-					bannerImg: 'img/banner_TMBQ.png',
-					bannerUrl: 'https://s.click.taobao.com/oCYs1Mw',
-				}
-			];
+				title: '超级红包链接',
+				bannerImg: 'img/banner_1019_1.jpg',
+				bannerUrl: 'https://s.click.taobao.com/9bY0KLw',
+			}, {
+				title: '双十一要抢就彻底的活动',
+				bannerImg: 'img/banner_1019_2.png',
+				bannerUrl: 'doubleEleven.html?adzoneId=' + home.adzoneId,
+			}, {
+				title: '聚划算页面',
+				bannerImg: 'img/banner_1019_3.jpg',
+				bannerUrl: 'https://s.click.taobao.com/780ZGLw',
+			}, {
+				title: '超值9.9',
+				bannerImg: 'img/banner1.jpg',
+				bannerUrl: 'activity.html?type=FA_CZ&typeName=超值9.9&adzoneId=' + home.adzoneId,
+			}, {
+				title: '编号5',
+				bannerImg: 'img/banner_1019_5.gif',
+				bannerUrl: 'http://engine.gitpapa.com/index/activity?appKey=3Xfki5UgaPvRz343qxj3cZ9C9i8JUmzNkBMG7Qr&adslotId=28020',
+			}];
 			var _this = this,
 				str = '<div class="swiper-wrapper banner-wrapper">';
 			for(var i = 0, len = banners.length; i < len; i++) {

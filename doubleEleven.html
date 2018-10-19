@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+		<meta http-equiv="Cache-Control" content="no-siteapp" />
+		<meta name="renderer" content="webkit">
+		<!-- 启用360浏览器的极速模式(webkit) -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<!-- 避免IE使用兼容模式 -->
+		<meta name="screen-orientation" content="portrait">
+		<meta name="x5-orientation" content="portrait">
+		<meta name="full-screen" content="yes">
+		<meta name="x5-fullscreen" content="true">
+		<meta name="x5-page-mode" content="app">
+		<meta name="browsermode" content="application">
+		<meta name="msapplication-tap-highlight" content="no">
+		<meta content="yes" name="apple-mobile-web-app-capable">
+		<meta content="black" name="apple-mobile-web-app-status-bar-style">
+		<meta content="telephone=no" name="format-detection">
+		<meta content="email=no" name="format-detection">
+		<meta name="copyright" content="">
+		<meta name="keywords" content="">
+		<!-- 关键词 -->
+		<meta name="description" content="e">
+		<!-- 网站内容描述 -->
+		<meta name="author" content="">
+		<!-- 作者 -->
+		<title>双十一</title>
+		<link rel="stylesheet" href="css/reset.css" />
+		<link href="css/swiper.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/doubleEleven.css" />
+		<script src="js/calRem.js"></script>
+		<script src="js/require.min.js"></script>
+		<script type="text/javascript">
+			require.config({
+				baseUrl: "./",
+				paths: {
+					"zepto": "js/zepto.min",
+					"swiper": "js/swiper.min",
+					"util": "js/util",
+				},
+				shim: {
+					"zepto": {
+						exports: "$"
+					}
+				}
+			});
+		</script>
+
+	</head>
+
+	<body>
+		<div class="modal"></div>
+		<div class="code-box">
+			<div class="code-title">扫码加VX领现金红包</div>
+			<div class="code-content"></div>
+		</div>
+		<div class="rule-box">
+			<div class="rule-box-btn"></div>
+			<div class="rule-title">活动规则说明</div>
+			<div class="rule-content">
+				<p class="rule-p-title">1.活动时间</p>
+				<p class="rule-p-desc">2018年11月1日—2018年11月12日</p>
+				<p class="rule-p-title">2.活动内容</p>
+				<p class="rule-p-desc">在规定活动时间内全场下单实际金额在 <br/>
+					<span class="color-1">10-50元</span>获得现金红包<span class="color-1">0.88元</span>，<br/>
+					<span class="color-1">50-100元</span>获得<span class="color-1">1.88元</span>，<br/>
+					<span class="color-1">100-500元</span>获得<span class="color-1">8.8元</span>现金红包
+				</p>
+				<p class="rule-p-title">3.领取形式</p>
+				<p class="rule-p-desc">扫码加客服VX或直接添加VX号：<span class="color-2">149056468</span>，确认收货后领取现金红包</p>
+			</div>
+		</div>
+		<div class="banner-double-eleven"></div>
+		<div class="section-tab clearfix">
+			<div class="tab tab-right tab-box" tourl="activityDoubleEleven.html?type=FA_YF&typeName=好货福利榜&favoritesId=18710460" needadzoneid="true">
+				<img class="tab-img" src="img/icon-eleven-tab-1.png">
+				<span class="tab-span">福利榜</span>
+			</div>
+			<div class="tab tab-right tab-box" tourl="activityDoubleEleven.html?type=FA_LY&typeName=0元免费领好物&favoritesId=18710459" needadzoneid="true">
+				<img class="tab-img" src="img/icon-eleven-tab-2.png">
+				<span class="tab-span">0元购</span>
+			</div>
+			<div class="tab tab-right tab-box" tourl="activityDoubleEleven.html?type=FA_BUG&typeName=Bug价专区&favoritesId=18710457" needadzoneid="true">
+				<img class="tab-img" src="img/icon-eleven-tab-3.png">
+				<span class="tab-span">bug价</span>
+			</div>
+			<div class="tab tab-box" tourl="activityDoubleEleven.html?type=FA_BK&typeName=爆款专区&favoritesId=18710454" needadzoneid="true">
+				<img class="tab-img" src="img/icon-eleven-tab-4.png">
+				<span class="tab-span">爆款</span>
+			</div>
+		</div>
+		<div class="section-guidance"></div>
+		<div class="section-red-packet">
+			<div class="red-packet-get"></div>
+			<div class="red-packet-rule"></div>
+		</div>
+		<div class="section-pro-list clearfix">
+			<div class="pro-title-2"></div>
+			<div class="pro-list">
+				<!--选品库-->
+			</div>
+		</div>
+		<div class="blank-32"></div>
+	</body>
+	<script>
+		require(['js/doubleEleven.js']);
+	</script>
+	<script src="https://s22.cnzz.com/z_stat.php?id=1275101074&web_id=1275101074" language="JavaScript"></script>
+	<script>
+		require(['zepto'], function($) {
+			$('a[title]').hide();
+		});
+	</script>
+</html>

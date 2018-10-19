@@ -52,6 +52,11 @@
 	</head>
 
 	<body>
+		<div class="modal"></div>
+		<div class="pop-up">
+			<div class="pop-up-close"></div>
+			<div class="pop-up-btn"></div>
+		</div>
 		<div class="section-search">
 			<div class="section-box clearfix">
 				<input id="search" type="text" class="section-input" placeholder="输入淘宝关键词查询" />
@@ -110,14 +115,17 @@
 				</div>
 				<div class="tab-desc">每日神券</div>
 			</div>
-			<div class="tab-box" tourl="" needadzoneid="true">
+			<div class="tab-box" tourl="http://engine.gitpapa.com/index/activity?appKey=3Xfki5UgaPvRz343qxj3cZ9C9i8JUmzNkBMG7Qr&adslotId=28020">
 				<div class="tab-img">
 					<img src="img/tab5.png" />
 				</div>
 				<div class="tab-desc">嗨玩</div>
 			</div>
 		</div>
-		<div class="section-line"></div>
+		<!--<div class="section-line"></div>-->
+		<div class="banner-middle">
+			<img class="banner-middle-img" src="img/banner_middle.png" />
+		</div>
 		<div class="section-recommend">
 			<div class="recomment-title"></div>
 			<div class="recommend-box clearfix">
@@ -158,5 +166,10 @@
 	<script>
 		require(['js/home.js']);
 	</script>
-
+	<script src="https://s22.cnzz.com/z_stat.php?id=1275101074&web_id=1275101074" language="JavaScript"></script>
+	<script>
+		require(['zepto'], function($){
+			$('a[title]').hide();
+		});
+	</script>
 </html>
