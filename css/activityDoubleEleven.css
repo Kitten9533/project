@@ -308,7 +308,7 @@ img {
 	position: relative;
 }
 
-.pro-cell::after {
+/*.pro-cell::after {
 	content: '马上抢';
 	position: absolute;
 	display: block;
@@ -323,6 +323,24 @@ img {
 	line-height: 0.30rem;
 	bottom: 0;
 	right: 0;
+	border-radius:0.03rem;
+}*/
+
+.pro-get-now{
+	margin-top: 0.13rem;
+	display: inline-block;
+	float: right;
+	padding-top: 0.04rem;
+	padding-bottom: 0.04rem;
+	padding-left: 0.10rem;
+	padding-right: 0.10rem;
+		text-align: center;
+	background: #F34906;
+	font-size: 0.20rem;
+	font-family: PingFang-SC-Medium;
+	font-weight: 500;
+	color: rgba(255, 255, 255, 1);
+	line-height: 0.30rem;
 	border-radius:0.03rem;
 }
 
