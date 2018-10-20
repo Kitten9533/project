@@ -264,7 +264,8 @@ img {
 	height: 0.52rem;
 	font-family: PingFangSC-Regular;
 	font-size: 0.24rem;
-	color: #818B8F;
+	/*color: #818B8F;*/
+	color: #000;
 	letter-spacing: 0;
 	text-align: left;
 	line-height: 0.26rem;

@@ -200,7 +200,8 @@ img {
 	font-size: 0.24rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
-	color: rgba(42, 42, 42, 1);
+	/*color: rgba(42, 42, 42, 1);*/
+	color: #000;
 	/*line-height: 0.21rem;*/
 	overflow: hidden;
 	text-overflow: ellipsis;

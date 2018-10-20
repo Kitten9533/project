@@ -246,8 +246,8 @@ img {
 	font-size: 0.24rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
-	color: rgba(102, 102, 102, 1);
-	/* line-height: 0.19rem; */
+	/*color: rgba(102, 102, 102, 1);*/
+	color: #000;
 	overflow: hidden;
 	white-space: nowrap;
 	text-overflow: ellipsis;
@@ -401,7 +401,8 @@ img {
 	font-size: 0.24rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
-	color: rgba(102, 102, 102, 1);
+	/*color: rgba(102, 102, 102, 1);*/
+	color: #000;
 	/* line-height: 0.24rem; */
 	overflow: hidden;
 	white-space: nowrap;
