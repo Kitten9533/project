@@ -48,7 +48,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			});
 		},
 		getData: function() {
-//			util.jzz(1);
+			util.jzz(1);
 			util.request('business/TbkApiAction/qryFavoritesItem', {
 				pageNum: home.listPageNum,
 				pageRow: home.listPageRow,

@@ -263,7 +263,7 @@ img {
 	-webkit-box-orient: vertical;
 	height: 0.52rem;
 	font-family: PingFangSC-Regular;
-	font-size: 0.22rem;
+	font-size: 0.24rem;
 	color: #818B8F;
 	letter-spacing: 0;
 	text-align: left;
@@ -275,7 +275,7 @@ img {
 
 .pro-content .pro-original-price {
 	margin-top: 0.09rem;
-	font-size: 0.18rem;
+	font-size: 0.22rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(232, 85, 16, 1);
@@ -288,7 +288,7 @@ img {
 
 .pro-content .pro-price {
 	margin-top: 0.10rem;
-	font-size: 0.18rem;
+	font-size: 0.22rem;
 	font-family: PingFang-SC-Bold;
 	font-weight: bold;
 	color: rgba(232, 26, 16, 1);
@@ -301,7 +301,7 @@ img {
 
 .pro-content .pro-count {
 	margin-top: 0.28rem;
-	font-size: 0.18rem;
+	font-size: 0.22rem;
 	font-family: PingFang-SC-Medium;
 	font-weight: 500;
 	color: rgba(153, 153, 153, 1);

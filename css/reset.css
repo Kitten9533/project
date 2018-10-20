@@ -121,7 +121,7 @@ body {
 	position: fixed;
 	top:0;
 	left:0;
-	z-index: 999999;
+	z-index: 6;
 	display: none;
 	
 }
@@ -137,4 +137,10 @@ body {
 	margin-top: -0.3rem;
 	margin-left: -0.3rem;	
 	border-radius: 0.30rem;
+}
+
+a[title]{
+	display: none;
+	height: 0;
+	visibility: hidden;
 }

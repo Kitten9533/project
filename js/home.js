@@ -198,7 +198,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			})
 		},
 		getRecommend: function() {
-			//			util.jzz(1);
+			util.jzz(1);
 			var postData = {
 				pageNum: 1,
 				pageRow: 12,
@@ -256,7 +256,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				'</div>';
 		},
 		getData: function() {
-			//			util.jzz(1);
+			util.jzz(1);
 			util.request('business/TbkApiAction/qryFavoritesItem', {
 				pageNum: home.listPageNum,
 				pageRow: home.listPageRow,

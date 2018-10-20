@@ -92,12 +92,10 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 			var postData = {
 				pageNum: activity.listPageNum,
 				pageRow: activity.listPageRow,
-				type: 'FA_QB',
 			};
-			var postUrl = 'business/TbkApiAction/qryFavoritesItem';
+			var postUrl = 'business/TbkApiAction/qryAllCoupon';
 			// 超值, 快抢
 			postData.adzoneId = !!activity.adzoneId ? Number(activity.adzoneId) : 0;
-			console.log(activity.searchName);
 			postData.searchName = activity.searchName;
 			util.request(postUrl, postData, function(data) {
 				util.jzz(0);

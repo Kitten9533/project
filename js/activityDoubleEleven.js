@@ -98,7 +98,7 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 				if(i % 2 == 0) {
 					str += '<div class="pro-cell-box clearfix">';
 				}
-				str += '<div class="pro-cell ' + (i % 2 == 1 ? 'pro-cell-left' : 'pro-cell-right') + '" tourl="' + (item.clickUrl || item.couponClickUrl || '') + '">' +
+				str += '<div class="pro-cell ' + (i % 2 == 1 ? 'pro-cell-right' : 'pro-cell-left') + '" tourl="' + (item.clickUrl || item.couponClickUrl || '') + '">' +
 					'<img class="pro-logo" src="' + item.picUrl + '" />' +
 					'<div class="pro-content">' +
 					//					'<div class="pro-blank"></div>' +
@@ -106,10 +106,10 @@ require(['zepto', 'swiper', 'util'], function($, Swiper, util) {
 					'<div class="clearfix">' +
 					'<div class="pro-original-price ' + (!item.reservePrice ? 'hidden' : '') + '">原价:<span class="line-through">￥' +
 					item.reservePrice + '</span></div>' +
-					(!!item.volume ? '<div class="pro-count">销量:' + item.volume + '</div>' : '') +
+					(!!item.volume ? '<div class="pro-count">已售' + item.volume + '</div>' : '') +
 					'</div>' +
 					'<div class="clearfix">' +
-					'<div class="pro-price">券后价：<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
+					'<div class="pro-price">券后价:<span class="price-text">￥' + item.zkFinalPrice + '</span></div>' +
 					//					(!!item.couponClickUrl ? '<div class="pro-get" tourl="' + item.couponClickUrl + '"><div class="pro-coupon-info">' + (item.couponInfo || "0") + '</div></div>' : '') +
 					'<div class="pro-get-now">马上抢</div>' + 
 				'</div>' +
